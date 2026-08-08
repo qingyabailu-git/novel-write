@@ -1,0 +1,4 @@
+interface:
+  display_name: "小说章节组细纲"
+  short_description: "规划接下来三到八章的剧情推进、冲突升级与章节钩子"
+  default_prompt: "使用 $novel-chapter-plan 规划接下来几章的短期剧情、冲突曲线和结尾钩子。"
