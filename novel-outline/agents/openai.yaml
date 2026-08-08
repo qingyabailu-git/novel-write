@@ -1,0 +1,4 @@
+interface:
+  display_name: "小说长期大纲"
+  short_description: "创建和维护长期大纲、卷章结构、人物成长线及伏笔布局"
+  default_prompt: "使用 $novel-outline 创建或修改小说的长期结构、卷章安排和人物成长线。"
