@@ -1,79 +1,154 @@
-# Import Case: Shentongzhe
+# Novel write
 
-> Chinese case notes: [README.zh-CN.md](README.zh-CN.md)
+A portable ChatGPT/Codex skill suite for file-backed novel projects.
 
-## Purpose
+> Chinese documentation: [README.zh-CN.md](README.zh-CN.md)
 
-This is a derived import-decomposition case built from a user-provided Chinese TXT source. It demonstrates how Novel write can preview a source, separate front matter from narrative chapters, preserve explicit metadata, keep candidate lore unconfirmed, and record the actual import endpoint.
+## What This Is
 
-The original TXT is intentionally not included in this repository. This directory contains metadata and structural analysis only; it is not a redistribution of the source novel and it is not canon for any other project.
+Novel write breaks novel work into reusable, reviewable, and resumable stages: import, project initialization, lore management, long-term outlining, short-term chapter planning, writing, continuation, revision, review, and style management.
 
-## Source Preview
+The suite is designed for projects whose authoritative material lives in a directory. It keeps prose, stable canon, current state, future plans, and review reports separate so later writing can be checked against what actually happened.
 
-- Title in source: 神通者
-- Author attribution in source: 天蚕土豆
-- Source identifier: 7665193065501445145
-- Status in source: serial
-- Category in source: traditional xuanhuan
-- Stated word count: 45,863
-- Stated chapter count: 13
-- Encoding check: UTF-8, no BOM detected, no replacement characters
-- Detected chapter headings: 13
-- Text before the first heading: 209 characters
-- Local split total: 51,018 characters across detected blocks
+The workflow is confirmation-driven whenever a write could establish canon, change the story direction, or create substantive prose. It distinguishes confirmed facts from candidates, plans, inferences, and unresolved decisions. The review skill is read-only; repairs are handled by a separate rewrite step after authorization.
 
-The source's own word-count field and the local split character total are different measurements. An import report should preserve both labels instead of silently replacing one with the other.
+## Included Skills
 
-## Detected Chapter Blocks
+| Skill | Purpose |
+| --- | --- |
+| novel-workflow | Orchestrates the end-to-end file-backed novel workflow. |
+| novel-project-init | Creates or repairs the project contract and file layout. |
+| novel-lore | Maintains stable characters, places, rules, factions, abilities, and items. |
+| novel-outline | Designs and updates long-term story structure. |
+| novel-chapter-plan | Plans the next short-term group of chapters. |
+| novel-write | Writes fragments, scenes, or chapters at an appropriate depth. |
+| novel-continue | Continues from the actual latest chapter and current state. |
+| novel-rewrite | Performs targeted revisions while preserving continuity. |
+| novel-review | Runs a read-only, evidence-based quality gate. |
+| novel-import | Previews and structures TXT or Markdown source material. |
+| novel-style | Defines reusable prose behavior without storing plot canon. |
 
-| # | Source heading | Characters | Import classification |
-| ---: | --- | ---: | --- |
-| 1 | 第0章 新书感言 | 1,303 | Front matter / author note |
-| 2 | 第1章 雷火馆 | 7,008 | Narrative chapter |
-| 3 | 第2章 神通骨 | 4,725 | Narrative chapter |
-| 4 | 第3章 次天品神通骨 | 5,577 | Narrative chapter |
-| 5 | 第4章 佛怒火莲 | 3,323 | Narrative chapter |
-| 6 | 第5章 机缘在身 | 4,257 | Narrative chapter |
-| 7 | 第6章 钟缨，景仪 | 3,431 | Narrative chapter |
-| 8 | 第7章 黎家，黎妍 | 2,990 | Narrative chapter |
-| 9 | 第8章 方浪 | 4,932 | Narrative chapter |
-| 10 | 第9章 陆鸣带来的一点小震撼 | 3,387 | Narrative chapter |
-| 11 | 第10章 神通前四境 | 3,600 | Narrative chapter |
-| 12 | 第11章 宗师法网 | 3,335 | Narrative chapter |
-| 13 | 第12章 高玉 | 3,150 | Narrative chapter |
+## Package Layout
 
-## Proposed Import Handling
+Each skill directory contains the following components when applicable:
 
-If the source were imported into a private novel project, the recommended plan would be:
+~~~text
+novel-*/
+├── SKILL.md                 # Main instructions
+├── agents/openai.yaml       # Interface metadata
+├── references/              # Reusable contracts and formats
+└── scripts/                 # Local helper scripts
+~~~
 
-1. Preserve the original source in a separate, clearly named location.
-2. Keep the 209-character prefix in the import report and inspect it as metadata or front matter.
-3. Store the author note separately from the narrative chapter sequence, unless the project explicitly wants it as chapter content.
-4. Split the 12 narrative chapters using the source headings.
-5. Record source metadata separately from project canon.
-6. Put all extracted characters, places, rules, items, and plot facts into a candidate-lore report.
-7. Record the endpoint after Chapter 12 without treating later plans as completed events.
-8. Ask the user which candidate facts should become canon before writing lore, outline, progress, or character-state files.
+The root manifest is novel-write.json. It records the package name, display name, version, included skills, excluded features, and release notes.
 
-## Candidate Lore and Story State
+## Design Principles
 
-These are candidates extracted from the source, not confirmed canon:
+### 1. File-backed continuity
 
-- Main viewpoint candidate: 陆鸣, a teenage cultivator connected to 雷火馆 and the 陆 family.
-- Family and institution candidates: 陆瑾, 陆青炎, 陆惊雷, 钟缨, 陆檬檬, and 雷火馆.
-- Conflict candidates: 章岳's departure, pressure from 大金乌馆, the family curse called 封灵咒, and the need to protect the institution's resources.
-- Power-system candidates: 神通骨 grades, 炼炁, 炼骨, 法纹, 神通大师, 神通宗师, 神通羽衣, and 宗师法网.
-- Inheritance candidates: a black ring, 佛怒火莲, three named fire seeds, 火焰刀, 雷火鞭, 飞鹤信,炼骨丹, and 大圣火符.
-- Setting candidates: 青原坊, 凤阳府, 大罗域, 黑雨区, 大金乌馆, 金钟玄罡馆, 黎家, and 景家.
-- Relationship candidates: 景仪's connection with 陆鸣, 黎妍's mediation, and the unresolved tension involving 景仪's paternal family.
+Actual chapter prose is the primary evidence of events. Progress, character state, lore, outline, and chapter groups have separate ownership and must not silently replace one another.
 
-The source endpoint leaves several hooks unresolved: the new 坊主's arrival in three days, the upcoming 神通馆馆会, the resource shortage, the potential journey into 黑雨区, the family curse, the sealed deeper space in the black ring, and the future confrontation with the forces behind the family's misfortune.
+### 2. Confirmation before canon
 
-## What This Case Demonstrates
+Import previews, project initialization, structural plans, and broad style changes are shown before persistence. Unconfirmed candidates and future plans remain explicitly marked.
 
-- Do not mistake a source metadata block for a chapter.
-- Keep source-reported metadata and locally measured counts separate.
-- Preserve unmatched text instead of discarding it.
-- Label extracted lore as candidate material until the user confirms it.
-- Use the latest narrative endpoint, not a future promise, as the current state.
-- Keep a public skill repository free of the original source text and long quotations.
+### 3. Continuity at the action level
+
+Reviews and writing passes trace time, place, viewpoint knowledge, physical condition, action ownership, object location, device procedures, and real-world constraints.
+
+### 4. Dialogue under pressure
+
+Each question or answer should respond to the preceding action, information, or intent. Evasion should be visible through behavior, distance, pauses, or viewpoint inference rather than unexplained topic changes.
+
+### 5. Concrete scene shape
+
+Openings establish the minimum event context. Suspense may show an anomaly or result before its cause. Endings point to a concrete next action, choice, discovery, or answerable question.
+
+### 6. Adaptive serial pacing
+
+For multi-threaded serial fiction, active lines can be labeled as primary, stable, or exploratory to expose stalled threads and repeated low-impact chapters. These are editorial heuristics, not universal frequency rules.
+
+## Typical Workflow
+
+~~~text
+Source or existing project
+        ↓
+Import preview or project inspection
+        ↓
+Confirmed project contract and style
+        ↓
+Long-term outline
+        ↓
+Short-term chapter group
+        ↓
+Write or continue
+        ↓
+Read-only review
+        ↓
+Authorized revision and state write-back
+~~~
+
+The orchestration skill can move through these stages without asking the user to manually choose each lower-level skill. It still pauses at decisions that would establish canon, change project direction, or write substantive content.
+
+## Review and Quality Gates
+
+The review process checks:
+
+- user requirements, protected material, and content boundaries;
+- time, place, sequence, objects, injuries, knowledge, and causality;
+- character motivation, decision pressure, voice, and behavior;
+- actor, target, possession, device state, and physical feasibility;
+- dialogue response pressure and meaningful action;
+- pacing, escalation, scene openings, suspense order, and concrete hooks;
+- vague explanation, repetitive patterns, and observable AI-like prose habits.
+
+Reviews return a pass/fail conclusion, remaining blockers, advisory items, evidence, violated rules, impact, and repair instructions. The review skill does not modify the project.
+
+## Helper Scripts
+
+### split_novel.py
+
+Previews or splits UTF-8 TXT/Markdown files by chapter headings. It supports dry-run and JSON output, preserves unmatched prefix text in the report, and writes only to an explicitly supplied output directory.
+
+### check_novel_project.py
+
+Performs conservative local structure and UTF-8 checks for a file-backed novel project. It reports missing required items, unreadable text, empty chapters, and replacement characters.
+
+Both scripts are local-only and do not make network requests.
+
+## Installation
+
+1. Copy the desired novel-* directories into a Codex-compatible skill directory.
+2. Preserve each directory's SKILL.md file.
+3. Keep agents/openai.yaml and references/ beside the main instruction when the host supports them.
+4. Keep scripts/ available for import and structural checks.
+5. Start with novel-workflow for a guided end-to-end process, or invoke a focused skill directly.
+
+## Scope and Privacy
+
+This package contains only skill instructions, reusable references, local helper scripts, interface metadata, and package metadata. It does not contain:
+
+- novel prose or chapter files;
+- character dossiers, lore databases, or world settings;
+- private project paths, author notes, browser data, credentials, or API keys;
+- illustrations, covers, interactive images, interactive stories, story directors, or scheduled automation execution.
+
+When using the skills, treat the selected project and the user's current explicit materials as the source boundary. Do not fill gaps with unrelated projects, old summaries, or unconfirmed assumptions.
+
+## Example Import Case
+
+The repository includes a derived import-decomposition case for the Chinese TXT source 神通者:
+
+- English case notes: [examples/import-case/shentongzhe/README.md](examples/import-case/shentongzhe/README.md)
+- Chinese case notes: [examples/import-case/shentongzhe/README.zh-CN.md](examples/import-case/shentongzhe/README.zh-CN.md)
+
+The case demonstrates metadata extraction, chapter-heading detection, front-matter handling, candidate-lore separation, endpoint tracking, and unresolved-hook reporting. The original TXT, full chapter bodies, and long quotations are intentionally not included.
+
+## Version and License
+
+- Package version: 1.2.0
+- Display name: Novel write
+- Manifest: novel-write.json
+- License: MIT; see [LICENSE](LICENSE)
+
+The included MIT license is the standard license identified by SPDX as MIT. Review the copyright-holder line before publication if a different holder name is required.
