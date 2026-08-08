@@ -1,0 +1,41 @@
+{
+  "package_name": "novel-write",
+  "display_name": "Novel write",
+  "version": "1.2.0",
+  "description": "Writing-focused ChatGPT/Codex Skills for file-backed novel planning, writing, continuation, revision, import, style, and evidence-based review, with confirmation-driven orchestration and reusable continuity gates.",
+  "excluded_features": [
+    "chapter illustrations",
+    "book covers",
+    "interactive images",
+    "interactive stories",
+    "story directors",
+    "scheduled automation execution"
+  ],
+  "release_notes": [
+    "Generalized continuity checks for time, place, action ownership, objects, devices, and real-world procedures.",
+    "Stronger dialogue-response, limited-viewpoint, suspense-order, and concrete-chapter-hook checks.",
+    "Optional pacing guidance for multi-threaded serialized stories.",
+    "Added separate English and Chinese package documentation.",
+    "Added a derived import-decomposition case without redistributing the source novel."
+  ],
+  "examples": [
+    {
+      "name": "shentongzhe-import-decomposition",
+      "path": "examples/import-case/shentongzhe",
+      "source_text_included": false
+    }
+  ],
+  "skills": [
+    "novel-workflow",
+    "novel-project-init",
+    "novel-lore",
+    "novel-outline",
+    "novel-chapter-plan",
+    "novel-write",
+    "novel-continue",
+    "novel-rewrite",
+    "novel-review",
+    "novel-import",
+    "novel-style"
+  ]
+}
