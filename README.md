@@ -137,7 +137,7 @@ When using the skills, treat the selected project and the user's current explici
 
 ## Example Import Case
 
-The repository includes a derived import-decomposition case for the Chinese TXT source 神通者:
+The repository includes a derived import-decomposition case for a user-provided Chinese TXT source:
 
 - English case notes: [examples/import-case/shentongzhe/README.md](examples/import-case/shentongzhe/README.md)
 - Chinese case notes: [examples/import-case/shentongzhe/README.zh-CN.md](examples/import-case/shentongzhe/README.zh-CN.md)
