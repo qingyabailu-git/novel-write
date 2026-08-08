@@ -1,0 +1,4 @@
+interface:
+  display_name: "小说长期设定"
+  short_description: "管理角色、世界观、地点、势力等长期设定并保持资料边界"
+  default_prompt: "使用 $novel-lore 整理或安全更新小说中的角色、世界规则、地点、势力和物品设定。"
