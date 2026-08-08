@@ -1,0 +1,4 @@
+interface:
+  display_name: "小说项目初始化"
+  short_description: "初始化小说项目、创作规则、设定与状态文件结构"
+  default_prompt: "使用 $novel-project-init 初始化一本小说项目，先整理待确认的设定和创作规则。"
