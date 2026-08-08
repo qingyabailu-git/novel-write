@@ -1,0 +1,4 @@
+interface:
+  display_name: "小说文风规范"
+  short_description: "定义视角、语气、对白、节奏与段落风格规则供写作复用"
+  default_prompt: "使用 $novel-style 定义或修改小说的视角、语气、对白、节奏和文风规范。"
