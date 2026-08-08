@@ -1,0 +1,5 @@
+﻿interface:
+  display_name: "小说创作自动流程"
+  short_description: "从已有正文开始，自动推进导入、设定、大纲、审查与续写流程"
+  default_prompt: "使用 $novel-workflow 启动小说自动创作流程，从已有正文开始逐阶段整理并在确认后继续。"
+
